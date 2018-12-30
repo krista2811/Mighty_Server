@@ -1,18 +1,6 @@
-var http = require("http");
-const port = 50691;
+var fs = require("fs");
 
-http.createServer(function(request, response){
-    /* 
-        HTTP 헤더 전송
-        HTTP Status: 200 : OK
-        Content Type: text/plain
-    */
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    
-    /*
-        Response Body 를 "Hello World" 로 설정
-    */
-    response.end("Hello World\n");
-}).listen(port);
+var data = fs.readFileSync('input.txt');
 
-console.log("Server running at " + http.port);
+console.log(data.toString());
+console.log("Program has ended");
