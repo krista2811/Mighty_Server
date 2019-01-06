@@ -39,17 +39,17 @@ db.once('open', function(){
     // CONNECTED TO MONGODB SERVER
     console.log("Connected to mongod server");
 });
-mongoose.connect('mongodb://localhost/mongodb_tutorial');
+mongoose.connect(string.database, {useNewUrlParser: true});
 
 // [RUN SERVER]
 var server = app.listen(port, function(){
     console.log("Express server has started on port " + port);
-    setup_database(string.database, function(){
+    setup_database(function(){
         console.log("Database set");
     });
 });
 
-function setup_database(database_name, callback) {
+function setup_database(callback) {
     var card = new Card();
     card.id = 0;
     card.rank = 3;
