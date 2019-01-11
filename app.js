@@ -19,8 +19,12 @@ var port = process.env.PORT || 50691;
 var Book = require('./models/book');
 var Card = require('./models/card');
 
-// [CONFIGURE ROUTER]
-var router = require('./routes')(app, Book);
+/*
+[CONFIGURE ROUTER]
+*/
+// phase router
+var phase = require('./routes/game/phase.js')(app);
+app.use('/game/phase', phase);
 
 app.use(express.static('public'));
 
