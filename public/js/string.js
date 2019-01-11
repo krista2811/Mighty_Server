@@ -26,6 +26,7 @@ exports.suit = {
     CLOVER : 3,
     NONE : 4
 };
+
 exports.job = {
     NONE : 0,
     JOKER : 1,
