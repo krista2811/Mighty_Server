@@ -1,4 +1,4 @@
-// app.js
+// init_cards.js. Can be used to restore
 
 // [LOAD PACKAGES]
 var express     = require('express');
@@ -31,9 +31,9 @@ function setup_database(callback) {
     set_one_suit(39, 1, string.suit.CLOVER, set_one_suit);
     
     var joker = new Card();
-    joker.id = 53;
+    joker.id = 52;
     joker.rank = -1;
-    joker.suti = string.suit.NONE;
+    joker.suit = string.suit.NONE;
     joker.job = string.job.JOKER;
     
     joker.save(function(err) {

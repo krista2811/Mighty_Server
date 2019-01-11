@@ -34,5 +34,17 @@ exports.job = {
     MIGHTY : 3
 };
 
+exports.player_job = {
+    LORD : 0,
+    FRIEND : 1,
+    YA : 2
+};
+
+exports.phase = {
+    ELECTION : 0,
+    PRE_GAME : 1,
+    ON_GAME : 2
+}
+
 // export as module
 
