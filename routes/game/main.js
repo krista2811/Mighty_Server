@@ -28,7 +28,7 @@ module.exports = function(app, string, Game){//함수로 만들어 객체 app을
 	});
     
     //update phase
-    router.put('/phase/', function(req, res) {
+    router.put('/phase', function(req, res) {
        Game.findOne(function(err, game) {
           if (err) {
               return res.status(500).send({error: 'database failure'});
