@@ -29,7 +29,7 @@ function set_one_player(id, job, hand, won_card, callback) {
     var player = new Player();
 
     // set default player. Now each job is Lord, Friend, YA, Ya, YA
-    player.id = id;
+    player.player_id = id;
     player.job = job;
     player.hand = hand;
     player.won_card = [];
@@ -77,7 +77,7 @@ function spreadHands(hand1, hand2, hand3, hand4, hand5, all_card_indices, callba
 function set_game(all_card_indices, callback) {
     var game = new Game();
     game.cards = all_card_indices;
-    game.players = [1, 2, 3, 4, 5];
+    game.players = [0, 1, 2, 3, 4];
     game.commit = 14;
     game.is_over = false;
     game.main_stream = string.suit.SPADE;
@@ -115,7 +115,7 @@ function set_game_data(callback) {
                                 console.log("SET ALL PLAYER!");
 
                                 // set game!
-                                set_game(card_indices, function() {
+                                set_game(card_indices.slice(50, 53), function() {
                                     console.log("SET GAME!");
                                 });
                             });

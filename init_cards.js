@@ -22,6 +22,7 @@ mongoose.connect(string.database, {useNewUrlParser: true});
 
 setup_database(function() {
     console.log("Database all set");
+    return;
 });
 
 function setup_database(callback) {
