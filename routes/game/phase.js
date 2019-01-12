@@ -1,5 +1,5 @@
 // phase router. THIS IS FOR MAIN PHASE!
-module.exports = function(app, Game){//함수로 만들어 객체 app을 전달받음
+module.exports = function(app, string, Game, Phase){//함수로 만들어 객체 app을 전달받음
 	var express = require('express');
 	var router = express.Router();
     
@@ -8,7 +8,8 @@ module.exports = function(app, Game){//함수로 만들어 객체 app을 전달�
             if (err) {
                 return res.status(500).send({error: 'database failure'});
             } else {
-                res.json(game);
+                console.log(game.main_stream);
+                res.json(game.main_stream);
             }
         });
 	});

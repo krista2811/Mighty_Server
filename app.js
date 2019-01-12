@@ -15,18 +15,26 @@ app.use(bodyParser.json());
 // [CONFIGURE SERVER PORT]
 var port = process.env.PORT || 50691;
 
+
 /*
 [CONFIGURE MODELS]
 */
 var Book = require('./models/book');
 var Card = require('./models/card');
 var Game = require('./models/game');
+var Phase = require('./models/phase');
+
 
 /*
 [CONFIGURE ROUTER]
 */
+
+// game router
+var game = require('./routes/game/main.js')(app, string, Game);
+app.use('/game', game);
+
 // phase router
-var phase = require('./routes/game/phase.js')(app, Game);
+var phase = require('./routes/game/phase.js')(app, string, Game, Phase);
 app.use('/game/phase', phase);
 
 app.use(express.static('public'));
