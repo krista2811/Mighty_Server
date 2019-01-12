@@ -5,7 +5,6 @@ var express     = require('express');
 var app         = express();
 
 var string      = require('./public/js/string');
-console.log(string.suit);
 var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
 
@@ -16,14 +15,18 @@ app.use(bodyParser.json());
 // [CONFIGURE SERVER PORT]
 var port = process.env.PORT || 50691;
 
+/*
+[CONFIGURE MODELS]
+*/
 var Book = require('./models/book');
 var Card = require('./models/card');
+var Game = require('./models/game');
 
 /*
 [CONFIGURE ROUTER]
 */
 // phase router
-var phase = require('./routes/game/phase.js')(app);
+var phase = require('./routes/game/phase.js')(app, Game);
 app.use('/game/phase', phase);
 
 app.use(express.static('public'));
@@ -37,12 +40,7 @@ db.once('open', function(){
     // CONNECTED TO MONGODB SERVER
     console.log("Connected to mongod server");
 });
-var db = mongoose.connection;
-db.on('error', console.error);
-db.once('open', function(){
-    // CONNECTED TO MONGODB SERVER
-    console.log("Connected to mongod server");
-});
+
 mongoose.connect(string.database, {useNewUrlParser: true});
 
 // [RUN SERVER]
