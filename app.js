@@ -35,7 +35,7 @@ app.use('/game', game);
 
 // phase router
 var phase = require('./routes/game/phase.js')(app, string, Game, Phase);
-app.use('/game/phase', phase);
+app.use('/game/main_phase', phase);
 
 app.use(express.static('public'));
 

@@ -7,7 +7,8 @@ var gameSchema = new Schema({
     commit : Number,
     is_over : Boolean,
     main_stream : Number, // enum value
-    phase : Number
+    phase : Number,
+    phase_id: Number
 });
 
 module.exports = mongoose.model('game', gameSchema);
