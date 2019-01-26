@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var phaseSchema = new Schema({
     id: Number,
-    cards : [],
+    cards : Object,
     turn : Number,
     sub_stream : Number // enum balue
 });

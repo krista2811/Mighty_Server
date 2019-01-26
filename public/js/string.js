@@ -44,7 +44,7 @@ exports.phase = {
     ELECTION : 0,
     PRE_GAME : 1,
     ON_GAME : 2
-}
+};
 
 // export as module
 

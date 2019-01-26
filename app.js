@@ -23,6 +23,9 @@ var Book = require('./models/book');
 var Card = require('./models/card');
 var Game = require('./models/game');
 var Phase = require('./models/phase');
+var Player = require('./models/player');
+var GameUtil = require('./routes/game/util.js')(string, Game, Player, Phase, Card);
+console.log(GameUtil.test);
 
 
 /*
@@ -34,7 +37,8 @@ var game = require('./routes/game/main.js')(app, string, Game);
 app.use('/game', game);
 
 // phase router
-var phase = require('./routes/game/phase.js')(app, string, Game, Phase);
+console.log(GameUtil.test);
+var phase = require('./routes/game/phase.js')(app, string, Phase, GameUtil);
 app.use('/game/main_phase', phase);
 
 app.use(express.static('public'));
