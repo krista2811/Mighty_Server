@@ -21,6 +21,10 @@ function Util(string, Game, Player, Phase, Card){
             return Player;
         },
         
+        get_phase_data: function(phase_id, callback) {
+            get_phase_data(Phase, phase_id, callback);
+        },
+        
         get_suit: function(card_id, callback) {
             get_suit(Card, card_id, callback);
         },
@@ -83,6 +87,17 @@ function update_phase_id(Game, phase_id, callback) {
             }
             
         });
+    });
+}
+
+function get_phase_data(Phase, phase_id, callback) {
+    Phase.findOne({id: phase_id}, function(err, phase) {
+        if (err) {
+            log.err("Error in Database fetching Phase");
+            callback(true, phase);
+        } else {
+            callback(false, phase);
+        }
     });
 }
 

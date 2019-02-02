@@ -33,7 +33,7 @@ console.log(GameUtil.test);
 */
 
 // game router
-var game = require('./routes/game/main.js')(app, string, Game);
+var game = require('./routes/game/main.js')(app, string, Game, GameUtil);
 app.use('/game', game);
 
 // phase router

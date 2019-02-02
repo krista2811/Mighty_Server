@@ -1,5 +1,5 @@
 // game/main router. THIS IS FOR MAIN PHASE!
-module.exports = function(app, string, Game){//함수로 만들어 객체 app을 전달받음
+module.exports = function(app, string, Game, Util){//함수로 만들어 객체 app을 전달받음
 	var express = require('express');
 	var router = express.Router();
 
@@ -14,6 +14,38 @@ module.exports = function(app, string, Game){//함수로 만들어 객체 app을
             }
         });
 	});
+    
+    router.get('/data', function(req, res) {
+       Game.findOne(function(err, game) {
+           if (err) {
+               return res.status(500).send({error: 'database failure'});
+           } else {
+               //TODO: get phase data from utils
+               console.log('GET /game/data');
+               Util.get_phase_data(game.phase_id, function(err, phase_data) {
+                   if (err) {
+                       res.status(500).send({error: "can't get phase data"});
+                   } else {
+                       // TODO: send game data & phase data to res.
+                       var data = {};
+                       
+                       var resDone = function(data) {
+                           res.json(data);
+                       };
+                       
+                       var setRes = function(done) {
+                           data.main = game;
+                           data.phase = phase_data;
+                           done(data);
+                       };
+                       
+                       setRes(resDone);
+                   }
+
+               });
+           }
+       }); 
+    });
     
     // get current game phase
 	router.get('/phase', function(req, res) {
